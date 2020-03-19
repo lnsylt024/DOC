@@ -1,0 +1,11 @@
+・WLSユーザでログイン
+
+・WLS管理サーバのプロセス存在確認
+
+「ps alx | grep weblogic.Name=atd1Aa | grep -v grep」
+
+・何も表示されない場合、WLS管理サーバ起動
+
+「/opt/SMG/wls/tools/start_WLSAdmin.sh atd1Aa」
+
+・WLS管理サーバのプロセス存在確認

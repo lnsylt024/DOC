@@ -1,0 +1,1949 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="E583D9FC-DFA6-42E7-8405-326577A924D2" activeEnvironment="Default" name="atd_spookMock" resourceRoot="" soapui-version="5.2.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="Port">${port}</con:setting>
+    <con:setting id="Set endpoint for HTTP Tunnel:">https://</con:setting>
+    <con:setting id="HTTP tunnel - KeyStore"/>
+    <con:setting id="HTTP tunnel - Password"/>
+    <con:setting id="HTTP tunnel - KeyPassword"/>
+    <con:setting id="HTTP tunnel - TrustStore"/>
+    <con:setting id="HTTP tunnel - TrustStore Password"/>
+    <con:setting id="Reuse request state">false</con:setting>
+    <con:setting id="HTTP tunnel - Set SSL Client Key Store path"/>
+    <con:setting id="Content types to monitor">*/html, */xml, */soap+xml, */json, */x-json, */javascript, */x-amf, */http</con:setting>
+    <con:setting id="HTTP tunnel - Set SSL Client Key Store Password"/>
+    <con:setting id="Max Log">100</con:setting>
+  </con:settings>
+  <!-- MockService -->
+  <con:restMockService id="1C303169-13CB-42D6-A27F-354BBF837C01" port="8088" path="/atd/spook" host="localhost" name="atd_spook MockService" docroot="">
+    <con:settings/>
+    <con:properties/>
+    <!-- MockAction -->
+    <con:restMockAction name="dp_flights" method="POST" resourcePath="/dp/flights" id="913D4FDF-1DC7-4AB3-A1DD-DBC451ABDB6F">
+      <con:settings/>
+      <con:defaultResponse>Response OK</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.dp_flights.responseDir
+def responseFile = config.dp_flights.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+            <con:response name="Response OK" id="C377AFE3-5C78-4FD2-9FE6-BAF8B55DB8F3" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="F5E37962-92E7-47A1-BD44-D277C3B5B318" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+       <!-- MockAction -->
+    <con:restMockAction name="dp_options" method="POST" resourcePath="/dp/options" id="7E499C4C-CE9D-4393-A02E-8FB6BF186A39">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.dp_options.responseDir
+def responseFile = config.dp_options.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="93DE4AB9-AE86-4481-BFAD-5CA0C91DEECE" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="5EAE4531-C77B-478F-85F4-57DD63576EAA" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="dp_hotels" method="POST" resourcePath="/dp/hotels" id="80252BBF-6C7E-46B5-90F9-D0F5180B4234">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.dp_hotels.responseDir
+def responseFile = config.dp_hotels.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="1763BA25-195B-4D8F-B680-DCDCD7031644" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="364594B7-A015-412D-A88A-9CCCC1FC1068" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="dp_hotel_kodawari_count" method="POST" resourcePath="/dp/hotel_kodawari_count" id="41526E6E-E39C-47E2-A935-B85F282F0D59">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.dp_hotel_kodawari_count.responseDir
+def responseFile = config.dp_hotel_kodawari_count.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="4ED43960-E495-4E28-B2D6-656A3FAC808E" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="4102C82E-A875-4701-A580-F664F99A391E" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="dp_hotel_plans" method="POST" resourcePath="/dp/hotel_plans" id="9945BE54-2474-4FA5-87C1-83A3A24C16AA">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.dp_hotel_plans.responseDir
+def responseFile = config.dp_hotel_plans.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="E044F8B4-FF33-43CA-96A1-2810D23BC032" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="E9CC01E1-1127-4002-B9DA-7D49C8648E6D" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="dp_cart" method="POST" resourcePath="/dp/cart" id="907482DF-E1F2-4D2F-9215-FEFC6058E3E1">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.dp_cart.responseDir
+def responseFile = config.dp_cart.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="31AB1859-4223-4F38-A6A8-881414DDA9B4" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="9D84F9F3-405C-4469-B1AC-90877E214F17" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="dp_mitchell" method="POST" resourcePath="/dp/mitchell" id="AECF8872-A919-4814-9DE2-2AA2148516E8">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.dp_mitchell.responseDir
+def responseFile = config.dp_mitchell.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="6E6AE0C2-827F-492F-9C1E-D0C3C29C30EC" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="95A7B3B2-2DAE-478C-938B-D54EB44855AB" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="dp_car_offices" method="POST" resourcePath="/dp/car_offices" id="DC053743-BACC-4D5F-9B05-0E748ADDFB9E">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.dp_car_offices.responseDir
+def responseFile = config.dp_car_offices.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="DE1C1341-9BCC-4B80-B9F8-8BC69C8F36BC" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="31A80A5A-5829-497C-B038-57794994FFD4" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="dp_car_office_classes" method="POST" resourcePath="/dp/car_office_classes" id="5B3EB7A6-ABF5-4A8F-BCAE-6A7EF70BB3CE">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.dp_car_office_classes.responseDir
+def responseFile = config.dp_car_office_classes.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="A4BDD9F4-B744-45BD-9A71-FCB76AC00AD7" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="FF752B57-0A67-4D14-AC6B-CDF848287635" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="dp_car_hotel_classes" method="POST" resourcePath="/dp/car_hotel_classes" id="7B47E18B-EC61-46D9-9B5A-6B38C047357D">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.dp_car_hotel_classes.responseDir
+def responseFile = config.dp_car_hotel_classes.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="C85B1A7A-0D12-47D3-82F3-5C435BD932D7" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="11F785A4-FF07-4966-B214-5BE2AA9C4DFA" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="dp_car_allot_return" method="POST" resourcePath="/dp/car_allot_return" id="1C2599EF-1DF6-4EB7-BA5D-5B6B5E977F07">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.dp_car_allot_return.responseDir
+def responseFile = config.dp_car_allot_return.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="A1182079-7BD1-4EFB-8925-E1BDE1FB5A2F" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="455A3670-66A0-4D72-94E3-6B9FE6E36272" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="dp_car_allot_return_embedded" method="POST" resourcePath="/dp/car_allot_return_embedded" id="0BE4F8E8-951E-496E-90DF-8C2B4B0087C4">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.dp_car_allot_return_embedded.responseDir
+def responseFile = config.dp_car_allot_return_embedded.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="82609DDE-1A5C-440B-A703-18D9CA4C2671" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="677EC19D-3870-4139-8EA6-2909081584D1" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="dp_car_plans_embedded" method="POST" resourcePath="/dp/car_plans_embedded" id="9D810ABB-D827-4A9D-B90C-1F8EA00FD817">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.dp_car_plans_embedded.responseDir
+def responseFile = config.dp_car_plans_embedded.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="3D5C4B52-1A28-476D-986C-7AA446D6C83F" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="B7FB7AB1-DAC5-49FD-BDE4-26735BEA1F78" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="dp_car_kodawari_count" method="POST" resourcePath="/dp/car_kodawari_count" id="18BE1F70-3C2B-494E-BE00-34A22B049017">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.dp_car_kodawari_count.responseDir
+def responseFile = config.dp_car_kodawari_count.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="37BD3D92-F70E-4DA3-99DB-9C0159F7E988" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="756A372D-2891-40A5-8F4C-2D8C47C95F6F" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="dp_car_allot_return_places" method="POST" resourcePath="/dp/car_allot_return_places" id="2D654332-B86A-4F65-9DC2-B9851F93FF79">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.dp_car_allot_return_places.responseDir
+def responseFile = config.dp_car_allot_return_places.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="525BF403-6775-4C5C-B7F3-E9F48FDB7A2A" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="D5EE5085-B106-4B64-8E7C-FFB4C7F6B578" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="dp_golfs" method="POST" resourcePath="/dp/golfs" id="082271AA-E162-434D-A3A3-CC5004F70767">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.dp_golfs.responseDir
+def responseFile = config.dp_golfs.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="E1A0CB90-6B39-4018-B18E-042245FFAD1D" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="14030AB0-8D20-4137-AAAD-0B36EC1F5B2C" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="dp_ikyu_hotel_plan_front" method="POST" resourcePath="/dp/ikyu_hotel_plan_front" id="DEEFC44F-557D-4245-AD52-9287EB57D305">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.dp_ikyu_hotel_plan_front.responseDir
+def responseFile = config.dp_ikyu_hotel_plan_front.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="97F1242F-D6AE-44F0-B6C7-86C5400429F8" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="3034B790-1977-4C2B-AA11-4F84237B9D93" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="dp_ikyu_hotel_vacant_front" method="POST" resourcePath="/dp/ikyu_hotel_vacant_front" id="64E0F8A3-7FC7-4F78-B07E-E6D82D7CB08E">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.dp_ikyu_hotel_vacant_front.responseDir
+def responseFile = config.dp_ikyu_hotel_vacant_front.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="E8145039-5989-4749-877F-8A3CF093D0FB" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="80ACC66B-CD40-4620-89C8-8A730FEFB742" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="tour_tours" method="POST" resourcePath="/tour/tours" id="F720FD73-7A4C-4750-AA0D-820417D9BB9E">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.tour_tours.responseDir
+def responseFile = config.tour_tours.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="183F69F1-8218-4AF4-91E2-8B295C970BCC" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="0B2C910E-8979-4445-92F1-6AC9DBE501BF" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="tour_tour_kodawari_count" method="POST" resourcePath="/tour/tour_kodawari_count" id="2907E3A4-C7D9-429E-BBEC-2AB74BF84E4B">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.tour_tour_kodawari_count.responseDir
+def responseFile = config.tour_tour_kodawari_count.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="0531B8C8-3174-45ED-98F6-738D4423516D" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="539E6E39-2AA0-484C-ADC8-DA4796BC8B48" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="tour_direct_flights" method="POST" resourcePath="/tour/direct_flights" id="7FC3058A-D164-4A1C-8157-7D38D942B759">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.tour_direct_flights.responseDir
+def responseFile = config.tour_direct_flights.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="704CD59C-1F95-4D12-B0FB-1B7D2DE1345A" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="55577B61-5FB8-4A6A-A265-0C042057C093" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="tour_tour_detail" method="POST" resourcePath="/tour/tour_detail" id="5D56406B-B86E-493A-B5E5-CE28900C4656">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.tour_tour_detail.responseDir
+def responseFile = config.tour_tour_detail.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="2C7B7706-D40E-4CD8-AD70-6E525D6D1D86" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="A4CE0194-2CBE-4386-8113-3E14065BCF1C" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="tour_tour_detail_amount" method="POST" resourcePath="/tour/tour_detail_amount" id="DF822001-AAC2-4CDD-B514-FC0F8DA89D6C">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.tour_tour_detail_amount.responseDir
+def responseFile = config.tour_tour_detail_amount.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="AFC4F70C-402F-4824-8F33-C42291F4EF88" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="5DF1F619-66F7-450D-893F-F1B1827124EC" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="tour_available_hotels" method="POST" resourcePath="/tour/available_hotels" id="F8AEA861-7448-42D4-9991-1DE8DB972B42">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.tour_available_hotels.responseDir
+def responseFile = config.tour_available_hotels.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="41CB2F54-B90C-490A-AD62-1A1C6378E177" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="FCC29318-57D2-4F52-9840-9D0F683B4806" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="tour_hotels" method="POST" resourcePath="/tour/hotels" id="50832850-6E69-4A96-AB04-382D02377CC2">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.tour_hotels.responseDir
+def responseFile = config.tour_hotels.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="4DFEE5FE-8B25-4406-BBEE-433352C3AA48" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="BF887ED9-7CF7-434B-A225-6CF19D692811" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="tour_hotel_plans" method="POST" resourcePath="/tour/hotel_plans" id="3E5210A1-8493-4A84-8A33-8CA91188DD10">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.tour_hotel_plans.responseDir
+def responseFile = config.tour_hotel_plans.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="70D9572F-8FDF-4100-92C6-310F1F7F4D98" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="44F4F811-68B9-496B-9F6A-6B6F348ED3C9" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="tour_hotel_kodawari_count" method="POST" resourcePath="/tour/hotel_kodawari_count" id="603BC2F3-DBC0-437D-A832-22AE9A2C7FEA">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.tour_hotel_kodawari_count.responseDir
+def responseFile = config.tour_hotel_kodawari_count.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="5819F7A4-294A-48C9-A48F-4EFDD1C29648" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="9180862C-F003-45B2-8ED7-AB59009FE6E1" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="tour_hotel_keyword_suggest" method="POST" resourcePath="/tour/hotel_keyword_suggest" id="48954EC4-FDDF-482B-AC20-757C7E869F21">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.tour_hotel_keyword_suggest.responseDir
+def responseFile = config.tour_hotel_keyword_suggest.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="2F8D818E-964C-4FD6-B156-8B8C136BDE47" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="01F01FAE-B6E9-4D14-A242-38A69072F557" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="tour_flights" method="POST" resourcePath="/tour/flights" id="8E3D4F9F-804A-408C-8CA2-87FC0C926FB9">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.tour_flights.responseDir
+def responseFile = config.tour_flights.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="BB619CF1-FC8F-48BB-8D45-AB3DD241FD91" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="A0E29856-56EE-4F30-AD9A-AF6F52ABCA39" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="tour_option_kind" method="POST" resourcePath="/tour/option_kind" id="8CD57F1C-22F8-4185-8924-DBB2DCACC9E5">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.tour_option_kind.responseDir
+def responseFile = config.tour_option_kind.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="CC991A6F-37A5-464B-A5C1-737F764AE2CA" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="8659E328-5B98-4B1A-8015-E32F9AF3BDCA" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="tour_options" method="POST" resourcePath="/tour/options" id="766E3561-2998-4E02-8FBF-B65D2DB69E42">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.tour_options.responseDir
+def responseFile = config.tour_options.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="0AFAB67E-A8C8-456D-85D7-C3E9C15D55D3" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="85369AD7-3473-44FC-820C-C6EBDC4BFAD6" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="tour_cart" method="POST" resourcePath="/tour/cart" id="D58E089B-322E-4CF9-B762-13A27A7C03DB">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.tour_cart.responseDir
+def responseFile = config.tour_cart.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="73311CC7-E1BB-4F26-AF06-1944F6A537A9" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="F97FFABE-A0BA-4E10-B6FE-D1925EBC11F3" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="crosssearch_direction" method="POST" resourcePath="/crosssearch/direction" id="3166F4C1-CB0F-43A8-9B35-4E2A9AC8C5D7">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.crosssearch_direction.responseDir
+def responseFile = config.crosssearch_direction.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="516B5DD5-A6EE-4467-9FEA-6CBA4E96D5BE" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="D1737F52-F6DA-43A8-A309-8C4DE865896B" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="crosssearch_region" method="POST" resourcePath="/crosssearch/region" id="17641516-0D8D-4E6E-A95E-158D29679EB2">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.crosssearch_region.responseDir
+def responseFile = config.crosssearch_region.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="4B5CF680-85DE-4A13-AD3E-E062727CD1F5" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="79C88B06-6404-48A3-929F-F1BF6656B667" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="crosssearch_price_calendar" method="POST" resourcePath="/crosssearch/price_calendar" id="1336087E-3866-4D5D-93A5-6356CD6BD450">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.crosssearch_price_calendar.responseDir
+def responseFile = config.crosssearch_price_calendar.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="002AF800-3948-4E19-A1AC-62FDE099623C" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="B3373013-A009-4CF4-91E7-3E8ABF118FD0" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="crosssearch_hotels" method="POST" resourcePath="/crosssearch/hotels" id="16EF815C-25CB-443E-9B0E-E8D524659292">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.crosssearch_hotels.responseDir
+def responseFile = config.crosssearch_hotels.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="5AC470C2-95D9-4BDB-B0B8-9B66362EF9F9" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="14F6775B-B9E2-4F0D-8BCF-F48EA6CC4C30" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="crosssearch_flights" method="POST" resourcePath="/crosssearch/flights" id="2F92EC15-C7F7-4990-AE9B-6E3070319C1B">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.crosssearch_flights.responseDir
+def responseFile = config.crosssearch_flights.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="70834FAB-9F45-4AA3-A9D4-73847F742A4D" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="36992E8A-98C7-4DD9-98E0-F2C2826730E3" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="crosssearch_hotel_keyword_suggest" method="POST" resourcePath="/crosssearch/hotel_keyword_suggest" id="0CA33EA6-CF6E-49E5-9883-0B8C5923173C">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.crosssearch_hotel_keyword_suggest.responseDir
+def responseFile = config.crosssearch_hotel_keyword_suggest.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="13050078-A326-4869-86B4-12ECD9FA841D" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="57362F56-6A82-4E7C-8A59-8728FD93C590" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="crosssearch_hotel_plans" method="POST" resourcePath="/crosssearch/hotel_plans" id="3735CF75-99B2-447C-9E88-27DD7A4002FF">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.crosssearch_hotel_plans.responseDir
+def responseFile = config.crosssearch_hotel_plans.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="CA888BE8-2A60-4146-AB57-1FD093F673A8" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="6165E519-B4D5-4EE7-B8DE-B4AE8FF70858" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="bulk_hotels" method="POST" resourcePath="/bulk/hotels" id="CD83FDE1-E059-4C5B-A05D-B338791FEA8B">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.bulk_hotels.responseDir
+def responseFile = config.bulk_hotels.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="F327D71D-7021-42DE-A538-E5A3ED1B4073" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="5437E774-B7FF-4E58-96C8-84ADDB8D7BF7" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="bulk_hotel_kodawari_count" method="POST" resourcePath="/bulk/hotel_kodawari_count" id="353B055B-2704-4ABC-AEFD-5A94341CC18D">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.bulk_hotel_kodawari_count.responseDir
+def responseFile = config.bulk_hotel_kodawari_count.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="6FDAC00F-1B2A-47CA-8410-5371E1FF8464" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="8C3AFD90-8609-4510-B2CD-540377072E4B" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="bulk_hotel_keyword_suggest" method="POST" resourcePath="/bulk/hotel_keyword_suggest" id="5D06F0B6-BA95-4BDC-9999-7BD8AE94AED0">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.bulk_hotel_keyword_suggest.responseDir
+def responseFile = config.bulk_hotel_keyword_suggest.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="4727E8AD-D6FA-4797-8494-3D71D91BD968" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="2386B8D2-6DC8-4197-9458-9ACB6C936BAE" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="bulk_hotel_plans" method="POST" resourcePath="/bulk/hotel_plans" id="06DB798D-A608-431A-B0CD-C4C4FA9A860B">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.bulk_hotel_plans.responseDir
+def responseFile = config.bulk_hotel_plans.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="B6F479FF-75F3-47AA-9736-37A383B61A18" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="6A6CD59E-CA09-4605-A223-4539D6FAAAC2" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="bulk_plan_info" method="POST" resourcePath="/bulk/plan_info" id="384EC899-66D7-4011-B0F9-BBDCCB2F1B68">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.bulk_plan_info.responseDir
+def responseFile = config.bulk_plan_info.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="567A8A3E-6D51-4327-ACE1-6068A2334352" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="B19CAD99-9030-4937-9116-5C169DEC475C" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="single_car_offices" method="POST" resourcePath="/single/car_offices" id="402E290F-481E-4A3E-B2C2-7E3D2751AA88">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.single_car_offices.responseDir
+def responseFile = config.single_car_offices.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="1021F8CE-FD08-4414-BF71-F8DA194986EE" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="2B4D5AA9-8EDB-4639-BDF7-694495652DFE" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="single_car_kodawari_count" method="POST" resourcePath="/single/car_kodawari_count" id="F7C1467E-6EA7-4498-8B40-DFEF04C4801B">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.single_car_kodawari_count.responseDir
+def responseFile = config.single_car_kodawari_count.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="F3569728-9BB4-4E26-9026-45020CDA89D1" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="34A51039-E684-4213-9A87-270984378FD5" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="single_car_classes" method="POST" resourcePath="/single/car_classes" id="BFE0E5A3-4EBB-4FBE-B089-DAB6B7499A8E">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.single_car_classes.responseDir
+def responseFile = config.single_car_classes.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="657B74A4-B401-4B01-A91D-36D2CF2E505A" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="F6190097-9C7E-4821-9376-800876E05F95" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="single_car_allot_return" method="POST" resourcePath="/single/car_allot_return" id="9B0B1A48-972E-413A-B5C5-60731010838F">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.single_car_allot_return.responseDir
+def responseFile = config.single_car_allot_return.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="93CE0FF2-2656-42B4-9174-CA120C0AD321" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="5EB109BF-3AA9-4D27-87A8-374685BC6BA4" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="single_car_office_classes" method="POST" resourcePath="/single/car_office_classes" id="9C06BF1D-09CE-452A-A49C-53EE34D0AC70">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.single_car_office_classes.responseDir
+def responseFile = config.single_car_office_classes.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="69E813A3-9AA1-46EB-AEF2-AF5239EA6664" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="B29ACF03-AF44-4A32-8A77-3D2DB6817327" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="single_hotels" method="POST" resourcePath="/single/hotels" id="8B3E3B21-E411-44A5-8B84-54546A500D7B">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.single_hotels.responseDir
+def responseFile = config.single_hotels.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="048D01D9-B746-404B-908E-BF4108C42BEC" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="B348E521-1A5B-4393-B18F-33420BAB2A85" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="single_hotel_kodawari_count" method="POST" resourcePath="/single/hotel_kodawari_count" id="85086112-45F0-4D52-93C6-C218B0307CD6">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.single_hotel_kodawari_count.responseDir
+def responseFile = config.single_hotel_kodawari_count.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="09BEF602-C98E-4EF8-92E3-14327640383E" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="7DEBD864-C268-45C3-BC8E-DAB6F5E2268A" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="single_hotel_keyword_suggest" method="POST" resourcePath="/single/hotel_keyword_suggest" id="37F95294-2C1D-4C79-A1B7-878985AA02B9">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.single_hotel_keyword_suggest.responseDir
+def responseFile = config.single_hotel_keyword_suggest.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="308B19C3-3981-44AD-B638-C6DF96A8E22C" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="8E9A85B7-445F-4E74-A585-774818909BA3" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="single_hotel_plans" method="POST" resourcePath="/single/hotel_plans" id="89B92E12-5CCD-45F3-B988-4C930AC4720C">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.single_hotel_plans.responseDir
+def responseFile = config.single_hotel_plans.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="E363FE5F-B9FF-412E-9184-658E0C2F54E3" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="8059DBA2-95D7-4361-8F4B-62DF3212FF65" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="single_option_region" method="POST" resourcePath="/single/option_region" id="B66300E8-959D-4E82-B173-6A48BE0B677B">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.single_option_region.responseDir
+def responseFile = config.single_option_region.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="0AFEE817-66C6-4877-AD37-64C4B260EDF5" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="2456125F-E203-4B89-AF6C-6D418BF8BE61" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="single_cart" method="POST" resourcePath="/single/cart" id="8908AA7C-80D1-4534-8827-7C9906165F14">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.single_cart.responseDir
+def responseFile = config.single_cart.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="76543AA6-26DD-40B3-A755-154DE2272D5F" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="3097D1D8-71D4-482C-9CE6-682E1ECE8F35" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="common_hotel_plan_calendar" method="POST" resourcePath="/common/hotel_plan_calendar" id="5945D102-392D-4351-8494-E0CF517C6CDC">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.common_hotel_plan_calendar.responseDir
+def responseFile = config.common_hotel_plan_calendar.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="50628E02-FF13-420D-9346-781FFF2C71DF" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="A684FFD3-51DD-47E0-B669-0E0C4CA6BDC5" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="common_hotel_detail" method="POST" resourcePath="/common/hotel_detail" id="40CC037B-6B76-4877-9625-37D63D52908F">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.common_hotel_detail.responseDir
+def responseFile = config.common_hotel_detail.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="E88B908C-3041-4EC0-A3CB-2D70B5B5C5CA" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="9F120020-47AE-48D5-A954-4506E288DB03" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="common_golf_detail" method="POST" resourcePath="/common/golf_detail" id="53B5D417-D34D-4D45-A874-5BBE4200628B">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.common_golf_detail.responseDir
+def responseFile = config.common_golf_detail.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="00BBEE7E-1CB5-4EFA-9FC2-4C9F17950C7C" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="39383C20-C0A0-491D-A5E5-FC58C4289889" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="common_option_calendar" method="POST" resourcePath="/common/option_calendar" id="39438086-00A6-4BD0-97FF-6172459D52AB">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.common_option_calendar.responseDir
+def responseFile = config.common_option_calendar.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="BD1B3D69-1950-457E-AC96-5921AC8DB812" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="B24B78C2-714F-402B-90AE-77B455F76702" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="common_option_calendar_init" method="POST" resourcePath="/common/option_calendar_init" id="5A22BDA4-B652-4579-94AA-5C89959F0D51">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.common_option_calendar_init.responseDir
+def responseFile = config.common_option_calendar_init.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="0B17610A-AB2C-48CF-9C3F-88CA80DA7BF2" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="A90BBEB5-4B74-45C8-B11B-4A48A9F564CA" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="common_master" method="POST" resourcePath="/common/master" id="7E499C4C-CE9D-4393-A02E-8FB6BF186A38">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.common_master.responseDir
+def responseFile = config.common_master.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="262396BD-0872-400F-BD0D-AA8E455C4EF6" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="A83B7A04-1E89-4AB4-928B-2A75CD7298FB" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+     <!-- MockAction -->
+    <con:restMockAction name="common_access_count" method="POST" resourcePath="/common/access_count" id="05F328F6-C278-4180-AC80-4D4161821A50">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>log.info 'httpRequest [' + mockRequest.httpRequest + ']'
+log.info 'requestContent [' + mockRequest.requestContent + ']'
+def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.common_access_count.responseDir
+def responseFile = config.common_access_count.responseFile
+log.info 'responseFile [' + responseDir + responseFile + ']'
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="262396BD-0872-400F-BD0D-AA8E455C4EF6" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="A83B7A04-1E89-4AB4-928B-2A75CD7298FB" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+     <!-- MockAction -->
+    <con:restMockAction name="common_additional_info" method="POST" resourcePath="/common/additional_info" id="05F328F6-C278-4180-AC80-4D4161821A50">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>log.info 'httpRequest [' + mockRequest.httpRequest + ']'
+log.info 'requestContent [' + mockRequest.requestContent + ']'
+def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.common_additional_info.responseDir
+def responseFile = config.common_additional_info.responseFile
+log.info 'responseFile [' + responseDir + responseFile + ']'
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="C377AFE3-5C78-4FD2-9FE6-BAF8B55DB8FB" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="F5E37962-92E7-47A1-BD44-D277C3B5B314" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="common_tieup_site" method="POST" resourcePath="/common/tieup_site" id="C1119F16-5102-45B6-87FD-E199ABAC8E2D">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.common_tieup_site.responseDir
+def responseFile = config.common_tieup_site.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="49F7A540-5564-443E-878B-CF0CA2C9C21F" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="986B9E74-594A-4F26-894A-F1ECC57CD5A8" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <!-- MockAction -->
+    <con:restMockAction name="common_tripadvisor" method="POST" resourcePath="/common/tripadvisor" id="445983BB-700F-41B1-85BA-AEFFACC791F7">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.common_tripadvisor.responseDir
+def responseFile = config.common_tripadvisor.responseFile
+log.info 'path:' + responseDir + responseFile
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="262396BD-0872-400F-BD0D-AA8E455C4EF6" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="A83B7A04-1E89-4AB4-928B-2A75CD7298FB" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+     <!-- MockAction -->
+    <con:restMockAction name="dp_hotel_keyword_suggest" method="POST" resourcePath="/dp/hotel_keyword_suggest" id="05F328F6-C278-4180-AC80-4D4161821A50">
+      <con:settings/>
+      <con:defaultResponse>Response Bad Request</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>log.info 'httpRequest [' + mockRequest.httpRequest + ']'
+log.info 'requestContent [' + mockRequest.requestContent + ']'
+def baseDir = System.getenv( "SOAPUI_MOCK_BASE" )
+def config = new ConfigSlurper().parse( new File( baseDir + "/conf/atd_spookMock.config" ).toURL() )
+def responseDir = baseDir + config.responseRoot + config.dp_hotel_keyword_suggest.responseDir
+def responseFile = config.dp_hotel_keyword_suggest.responseFile
+log.info 'responseFile [' + responseDir + responseFile + ']'
+
+def file = new File( responseDir, responseFile ).toURL().openStream()
+def length = file.available()
+mockRequest.httpResponse.setContentType( "application/json; charset=UTF-8" )
+mockRequest.httpResponse.setContentLength( length )
+com.eviware.soapui.support.Tools.readAndWrite( file, length, mockRequest.httpResponse.getOutputStream() )
+file.close()
+
+return "Response OK"</con:dispatchPath>
+      <!-- Response -->
+      <con:response name="Response OK" id="D18365AC-15D0-4C24-A78D-DD4DE548D7AA" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+      <con:response name="Response Bad Request" id="801C818B-E21D-43C4-AEF7-21EFB6DEB123" httpResponseStatus="400" mediaType="application/json">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+    <con:onRequestScript>log.info "httpReq: " + mockRequest.getHttpRequest()
+log.info "httpReqContent: " + mockRequest.getRequestContent()</con:onRequestScript>
+  </con:restMockService>
+  <!-- properties -->
+  <con:properties/>
+  <con:wssContainer/>
+  <con:oAuth2ProfileContainer/>
+  <con:sensitiveInformation/>
+</con:soapui-project>
