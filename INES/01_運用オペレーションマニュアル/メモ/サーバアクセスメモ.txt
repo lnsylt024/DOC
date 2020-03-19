@@ -1,0 +1,21 @@
+\\10.188.188.30\ts\CMN\03_TS3\ツール
+
+・WINSCP
+SCP
+10.39.229.3:422
+ines002t@atdapl01@atdaat1a
+******
+01aplatd
+
+・TeraTerm
+10.39.229.3:22
+ines002t
+******
+atdaat1a
+atdapl01
+01aplatd
+
+・WLS CONSOLE
+https://10.39.230.21:7080/ATDconsole
+system
+atdaat1a01
