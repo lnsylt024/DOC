@@ -5,3 +5,6 @@
 </div>
   
 <div>Office:GRGTK-RG8CV-DVFY2-7B9DD-6G4P3</div>
+
+Office Professional Plus 2016 (Discontinued) - Retail
+Q9QN8-WXM2F-VJRP7-QGKYH-FJRQP
